@@ -6,5 +6,5 @@ ConvertedReadings = FOREACH Source GENERATE FLATTEN(convert_temp.fahrenheit(cels
 
 STORE ConvertedReadings INTO '/weather/convertedweather';
 
-
+STORE ConvertedReadings INTO '/data/scrubbedweather' USING PigStorage(' ');
 
