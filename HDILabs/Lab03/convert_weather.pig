@@ -1,4 +1,4 @@
-REGISTER 'wasb:///data/convert_temp.py' using jython as convert_temp;
+REGISTER 'wasb:///weather/convert_temp.py' using jython as convert_temp;
 
 -- Load the weather source data
 Source = LOAD '/weather/scrubbedweather' AS (celsius_readings:chararray);
