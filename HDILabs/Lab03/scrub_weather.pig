@@ -1,5 +1,5 @@
 -- Load the weather source data
-Source = LOAD '/data/weather' USING PigStorage('\t') AS (year:chararray, month:int, maxtemp:float, mintemp:float, frostdays:int, rainfall:float, sunshinehours:chararray);
+Source = LOAD '/weather/heathrow.txt' USING PigStorage('\t') AS (year:chararray, month:int, maxtemp:float, mintemp:float, frostdays:int, rainfall:float, sunshinehours:chararray);
 
 -- filter the data to remove notes and header row
 Data = FILTER Source BY maxtemp IS NOT NULL AND mintemp IS NOT NULL AND year != 'yyyy';
@@ -21,4 +21,4 @@ Readings = UNION CleanReadings, CleanedReadings;
 SortedReadings = ORDER Readings BY year ASC, month ASC;
 
 -- Save the scrubbed data
-STORE SortedReadings INTO '/data/scrubbedweather' USING PigStorage(' ');
+STORE SortedReadings INTO '/weather/scrubbedweather' USING PigStorage(' ');
