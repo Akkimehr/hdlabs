@@ -7,7 +7,7 @@ Source = LOAD '/weather/scrubbedweather' AS (celsius_readings:chararray);
 ConvertedReadings = FOREACH Source GENERATE FLATTEN(convert_temp.fahrenheit(celsius_readings));
 
 -- Save the results
-STORE ConvertedReadings INTO '/data/convertedweather';
+STORE ConvertedReadings INTO '/weather/convertedweather';
 
 
 
